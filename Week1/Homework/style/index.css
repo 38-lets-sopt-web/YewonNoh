@@ -1,6 +1,9 @@
 @import "./header.css";
 @import "./footer.css";
+@import "./main.css";
+@import "./navbar.css";
 
 body {
   margin: 0;
+  background-color: #e5f3f2;
 }
