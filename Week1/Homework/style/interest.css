@@ -1,0 +1,87 @@
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.card .title {
+  margin: 12px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding: 0 12px 12px;
+}
+
+button {
+  flex: 1;
+  border: none;
+  padding: 6px 0;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 500;
+  color: #fff;
+}
+
+.like {
+  background: #cfe8ff;
+}
+
+.hate {
+  background: #ffd6d6;
+}
+
+.like:hover {
+  background: #90caff;
+}
+
+.hate:hover {
+  background: #ff9e9e;
+}
+
+@media (max-width: 1200px) {
+  .card-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .card-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

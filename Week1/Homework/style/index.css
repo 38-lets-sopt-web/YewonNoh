@@ -5,6 +5,7 @@
 @import "./photoDump.css";
 @import "./toWeb.css";
 @import "./like.css";
+@import "./interest.css";
 
 body {
   margin: 0;
