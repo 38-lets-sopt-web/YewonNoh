@@ -4,6 +4,7 @@
 @import "./navbar.css";
 @import "./photoDump.css";
 @import "./toWeb.css";
+@import "./like.css";
 
 body {
   margin: 0;
