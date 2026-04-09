@@ -3,6 +3,7 @@
 @import "./main.css";
 @import "./navbar.css";
 @import "./photoDump.css";
+@import "./toWeb.css";
 
 body {
   margin: 0;
