@@ -14,6 +14,11 @@ const checkAll = document.getElementById('checkAll');
 const deleteBtn = document.getElementById('deleteBtn');
 const sortSelect = document.querySelector('.sort-select');
 
+const titleInput = document.querySelector('input[type="text"]');
+const selects = document.querySelectorAll('.filter-item select');
+const applyBtn = document.querySelector('.apply');
+const resetBtn = document.querySelector('.reset');
+
 function save() {
   localStorage.setItem(EXPENSE, JSON.stringify(data));
 }
@@ -62,6 +67,43 @@ function sortData(type) {
   render(sorted);
 }
 
+function filterData() {
+  let filtered = [...data];
+
+  const title = titleInput.value.toLowerCase();
+  const type = selects[0].value;
+  const category = selects[1].value;
+  const payment = selects[2].value;
+
+  if (title) {
+    filtered = filtered.filter(d =>
+      d.title.toLowerCase().includes(title)
+    );
+  }
+
+  if (type !== '전체') {
+    filtered = filtered.filter(d =>
+      type === '수입' ? d.amount > 0 : d.amount < 0
+    );
+  }
+
+  if (category !== '전체') {
+    filtered = filtered.filter(d => d.category === category);
+  }
+
+  if (payment !== '전체') {
+    filtered = filtered.filter(d => d.payment === payment);
+  }
+
+  render(filtered);
+}
+
+function resetFilter() {
+  titleInput.value = '';
+  selects.forEach(s => (s.value = '전체'));
+  render(data);
+}
+
 function deleteSelected() {
   const checked = document.querySelectorAll('.row-check:checked');
   const ids = [...checked].map(cb => Number(cb.dataset.id));
@@ -90,5 +132,8 @@ deleteBtn.addEventListener('click', deleteSelected);
 sortSelect.addEventListener('change', e => {
   sortData(e.target.value);
 });
+
+applyBtn.addEventListener('click', filterData);
+resetBtn.addEventListener('click', resetFilter);
 
 sortData('desc');
