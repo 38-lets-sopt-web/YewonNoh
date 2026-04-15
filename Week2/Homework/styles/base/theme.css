@@ -4,6 +4,9 @@
   --color-white: #ffffff;
   --color-black: #000000;
   --color-gray: #ccc;
+  --color-light-gray: #eee;
+  --color-positive: #2563eb;
+  --color-negative: #dc2626;
 
   --font-size-sm: 0.75rem;
   --font-size-md: 1rem;

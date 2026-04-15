@@ -59,6 +59,49 @@
           <button class="reset">초기화</button>
         </div>
       </section>
+
+      <!-- 표 -->
+      <section class="table-section">
+        <div class="table-header">
+          <select class="sort-select">
+            <option value="desc">날짜 내림차순</option>
+            <option value="asc">날짜 오름차순</option>
+          </select>
+
+          <div class="table-actions">
+            <button id="deleteBtn">선택 삭제</button>
+            <button id="addBtn">추가</button>
+          </div>
+        </div>
+
+        <table class="expense-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="checkAll" /></th>
+              <th>제목</th>
+              <th>금액</th>
+              <th>날짜</th>
+              <th>카테고리</th>
+              <th>결제수단</th>
+            </tr>
+          </thead>
+
+          <tbody id="expense-body"></tbody>
+
+          <tfoot>
+            <tr>
+              <td></td>
+              <td>total</td>
+              <td id="total-amount"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
     </main>
+
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
