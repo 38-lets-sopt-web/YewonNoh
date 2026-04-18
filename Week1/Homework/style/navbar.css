@@ -1,20 +1,20 @@
 nav {
   position: sticky;
   background: var(--color-white);
-  padding: 8px;
-  border-radius: 16px;
+  padding: 0.5rem;
+  border-radius: 1rem;
   top: 140px;
   height: fit-content;
 }
 
 nav li:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 nav a {
   display: block;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
   text-decoration: none;
   color: var(--color-black);
   font-weight: var(--font-weight-medium);
@@ -22,11 +22,11 @@ nav a {
 }
 
 nav li:first-child a {
-  border-radius: 16px 16px 8px 8px;
+  border-radius: 1rem 1rem 0.5rem 0.5rem;
 }
 
 nav li:last-child a {
-  border-radius: 8px 8px 16px 16px;
+  border-radius: 0.5rem 0.5rem 1rem 1rem;
 }
 
 nav a:hover {

@@ -8,13 +8,13 @@ header {
   background-color: var(--color-primary);
   text-align: center;
   box-sizing: border-box;
-  padding: 20px 40px;
+  padding: 1.25rem 2.5rem;
   z-index: 10;
 }
 
 header .title h1 {
   font-size: var(--font-size-xl);
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 header img {

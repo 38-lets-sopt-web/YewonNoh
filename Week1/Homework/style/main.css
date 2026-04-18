@@ -5,16 +5,16 @@ html {
 main {
   display: grid;
   grid-template-columns: 220px 1fr;
-  gap: 40px;
-  padding: 40px;
-  margin-top: 100px;
+  gap: 2.5rem;
+  padding: 2.5rem;
+  margin-top: 6.25rem;
 }
 
 main > section {
   grid-column: 2;
-  scroll-margin-top: 100px
+  scroll-margin-top: 6.25rem;
 }
 
 section h2 {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
