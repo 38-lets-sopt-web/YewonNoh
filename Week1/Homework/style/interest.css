@@ -27,8 +27,8 @@
 
 .card .title {
   margin: 12px;
-  font-weight: bold;
   text-align: left;
+  font-size: 16px;
 }
 
 .btn-group {
