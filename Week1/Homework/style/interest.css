@@ -5,13 +5,13 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background: var(--color-white);
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
 }
 
 .card:hover {
@@ -27,8 +27,8 @@
 
 .card .interest-title {
   margin: 0.75rem;
-  text-align: left;
   font-size: var(--font-size-md);
+  text-align: left;
 }
 
 .btn-group {
@@ -40,14 +40,14 @@
 
 button {
   flex: 1;
-  border: none;
   padding: 0.3rem 0;
+  border: none;
   border-radius: 1.5rem;
   font-size: var(--font-size-sm);
-  cursor: pointer;
-  transition: 0.2s;
   font-weight: var(--font-weight-medium);
   color: var(--color-white);
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .like {

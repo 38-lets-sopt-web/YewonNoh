@@ -9,11 +9,11 @@
 }
 
 .like-item {
+  flex-shrink: 0;
   width: 160px;
   height: 160px;
   border-radius: 1rem;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
 .like-item img {
