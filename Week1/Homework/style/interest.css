@@ -5,7 +5,7 @@
 }
 
 .card {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -28,7 +28,7 @@
 .card .interest-title {
   margin: 12px;
   text-align: left;
-  font-size: 16px;
+  font-size: var(--font-size-md);
 }
 
 .btn-group {
@@ -43,27 +43,27 @@ button {
   border: none;
   padding: 6px 0;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: var(--font-size-sm);
   cursor: pointer;
   transition: 0.2s;
-  font-weight: 500;
-  color: #fff;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-white);
 }
 
 .like {
-  background: #cfe8ff;
+  background: var(--color-like);
 }
 
 .hate {
-  background: #ffd6d6;
+  background: var(--color-hate);
 }
 
 .like:hover {
-  background: #90caff;
+  background: var(--color-like-hover);
 }
 
 .hate:hover {
-  background: #ff9e9e;
+  background: var(--color-hate-hover);
 }
 
 @media (max-width: 1200px) {

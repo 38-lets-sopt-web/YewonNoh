@@ -1,9 +1,9 @@
 footer {
-  background-color: #9ae6e4;
+  background-color: var(--color-primary);
   text-align: center;
   padding: 60px 0;
 }
 
 footer p {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }

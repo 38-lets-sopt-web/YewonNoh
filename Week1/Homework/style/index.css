@@ -1,4 +1,5 @@
 @import "./reset.css";
+@import "./theme.css";
 @import "./header.css";
 @import "./footer.css";
 @import "./main.css";
@@ -9,6 +10,5 @@
 @import "./interest.css";
 
 body {
-  margin: 0;
-  background-color: #e5f3f2;
+  background-color: var(--color-background);
 }

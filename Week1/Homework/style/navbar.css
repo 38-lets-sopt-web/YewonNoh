@@ -1,6 +1,6 @@
 nav {
   position: sticky;
-  background: #fff;
+  background: var(--color-white);
   padding: 8px;
   border-radius: 16px;
   top: 140px;
@@ -16,8 +16,8 @@ nav a {
   padding: 12px;
   border-radius: 8px;
   text-decoration: none;
-  color: #000;
-  font-weight: 500;
+  color: var(--color-black);
+  font-weight: var(--font-weight-medium);
   transition: background-color 0.3s ease;
 }
 
@@ -30,5 +30,5 @@ nav li:last-child a {
 }
 
 nav a:hover {
-  background-color: #8fd4d2;
+  background-color: var(--color-primary-hover);
 }
