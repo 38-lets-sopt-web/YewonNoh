@@ -18,10 +18,6 @@ header img {
   border-radius: 50%;
 }
 
-header .title h3, header .title p {
-  margin: 0;
-}
-
 header > img {
   transition: box-shadow 0.4s;
   cursor: pointer;
