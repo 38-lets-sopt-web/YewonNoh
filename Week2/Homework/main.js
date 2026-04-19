@@ -19,6 +19,16 @@ const selects = document.querySelectorAll('.filter-item select');
 const applyBtn = document.querySelector('.apply');
 const resetBtn = document.querySelector('.reset');
 
+const modal = document.getElementById('expense-modal-overlay');
+const amountInput = document.getElementById('input-amount');
+const openBtn = document.getElementById('addBtn');
+const closeBtn = document.getElementById('closeModal');
+const submitBtn = document.getElementById('submitBtn');
+
+amountInput.addEventListener('input', (e) => {
+  e.target.value = e.target.value.replace(/[^0-9]/g, '');
+});
+
 function save() {
   localStorage.setItem(EXPENSE, JSON.stringify(data));
 }
@@ -37,7 +47,7 @@ function render(list) {
     const tr = document.createElement('tr');
 
     tr.innerHTML = `
-      <td><input type="checkbox" class="row-check" data-id="${item.id}" /></td>
+      <td><input type="checkbox" class="expense-row-checkbox" data-id="${item.id}" /></td>
       <td>${item.title}</td>
       <td class="${item.amount > 0 ? 'plus' : 'minus'}">
         ${formatAmount(item.amount)}
@@ -55,7 +65,7 @@ function render(list) {
   });
 
   totalEl.textContent = formatAmount(total);
-  totalEl.className =total > 0 ? 'plus' : total < 0 ? 'minus' : '';
+  totalEl.className = total > 0 ? 'plus' : total < 0 ? 'minus' : '';
 }
 
 function sortData(type) {
@@ -105,7 +115,7 @@ function resetFilter() {
 }
 
 function deleteSelected() {
-  const checked = document.querySelectorAll('.row-check:checked');
+  const checked = document.querySelectorAll('.expense-row-checkbox:checked');
   const ids = [...checked].map(cb => Number(cb.dataset.id));
 
   data = data.filter(d => !ids.includes(d.id));
@@ -114,15 +124,15 @@ function deleteSelected() {
 }
 
 checkAll.addEventListener('change', () => {
-  document.querySelectorAll('.row-check').forEach(cb => {
+  document.querySelectorAll('.expense-row-checkbox').forEach(cb => {
     cb.checked = checkAll.checked;
   });
 });
 
 document.addEventListener('change', e => {
-  if (e.target.classList.contains('row-check')) {
-    const all = document.querySelectorAll('.row-check');
-    const checked = document.querySelectorAll('.row-check:checked');
+  if (e.target.classList.contains('expense-row-checkbox')) {
+    const all = document.querySelectorAll('.expense-row-checkbox');
+    const checked = document.querySelectorAll('.expense-row-checkbox:checked');
     checkAll.checked = all.length === checked.length;
   }
 });
@@ -137,3 +147,46 @@ applyBtn.addEventListener('click', filterData);
 resetBtn.addEventListener('click', resetFilter);
 
 sortData('desc');
+
+openBtn.addEventListener('click', () => {
+  modal.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+modal.addEventListener('click', e => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+  }
+});
+
+submitBtn.addEventListener('click', () => {
+  const title = document.getElementById('input-title').value;
+  const type = document.getElementById('input-type').value;
+  const amount = document.getElementById('input-amount').value;
+  const date = document.getElementById('input-date').value;
+  const category = document.getElementById('input-category').value;
+  const payment = document.getElementById('input-payment').value;
+
+  if (!title || !amount || !date || !category || !payment) {
+    alert('값을 입력하세요');
+    return;
+  }
+
+  const newItem = {
+    id: Date.now(),
+    title,
+    date,
+    category,
+    payment,
+    amount: type === '수입' ? Number(amount) : -Number(amount)
+  };
+
+  data.push(newItem);
+  save();
+
+  modal.classList.remove('active');
+  sortData(sortSelect.value);
+});

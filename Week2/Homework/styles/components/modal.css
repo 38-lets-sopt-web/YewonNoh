@@ -1,0 +1,86 @@
+.expense-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.expense-modal-overlay.active {
+  display: flex;
+}
+
+.expense-modal {
+  width: 420px;
+  background: var(--color-white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.expense-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 1.2rem;
+}
+
+.expense-modal-title {
+  font-size: var(--font-size-lg);
+}
+
+.expense-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.expense-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.expense-label {
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.expense-modal-body input,
+.expense-modal-body select {
+  width: 100%;
+  height: 2.6rem;
+  margin-bottom: 1rem;
+  padding: 0 0.6rem;
+  border: 1px solid var(--color-gray);
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  font-size: var(--font-size-md);
+}
+
+.expense-input-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.expense-submit-button {
+  width: 100%;
+  height: 2.6rem;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+
+.expense-submit-button:hover {
+  opacity: 0.9;
+}

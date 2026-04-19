@@ -109,6 +109,69 @@
           </tfoot>
         </table>
       </section>
+
+      <div id="expense-modal-overlay" class="expense-modal-overlay">
+        <div class="expense-modal">
+          <div class="expense-modal-header">
+            <span class="expense-modal-title">내역 추가</span>
+            <button id="closeModal" class="expense-modal-close">✕</button>
+          </div>
+
+          <div class="expense-modal-body">
+            <div class="expense-field">
+              <label class="expense-label">제목</label>
+              <input id="input-title" class="expense-input" placeholder="제목을 입력하세요" />
+            </div>
+
+            <div class="expense-input-row">
+              <div class="expense-field">
+                <label class="expense-label">유형</label>
+                <select id="input-type" class="expense-select">
+                  <option value="지출">지출 (-)</option>
+                  <option value="수입">수입 (+)</option>
+                </select>
+              </div>
+
+              <div class="expense-field">
+                <label class="expense-label">금액 (숫자만)</label>
+                <input id="input-amount" class="expense-input" type="number" inputmode="numeric" placeholder="금액을 입력하세요" />
+              </div>
+            </div>
+
+            <div class="expense-field">
+              <label class="expense-label">날짜</label>
+              <input id="input-date" class="expense-input" type="date" />
+            </div>
+
+            <div class="expense-input-row">
+              <div class="expense-field">
+                <label class="expense-label">카테고리</label>
+                <select id="input-category" class="expense-select">
+                  <option>선택</option>
+                  <option>교통</option>
+                  <option>문화</option>
+                  <option>생활</option>
+                  <option>식비</option>
+                  <option>월급</option>
+                  <option>기타</option>
+                </select>
+              </div>
+
+              <div class="expense-field">
+                <label class="expense-label">결제수단</label>
+                <select id="input-payment" class="expense-select">
+                  <option>선택</option>
+                  <option>신용카드</option>
+                  <option>체크카드</option>
+                  <option>현금</option>
+                </select>
+              </div>
+            </div>
+
+            <button id="submitBtn" class="expense-submit-button">추가</button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script type="module" src="./main.js"></script>
