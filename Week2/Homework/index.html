@@ -110,6 +110,7 @@
         </table>
       </section>
 
+      <!-- 내역 추가 모달 -->
       <div id="expense-modal-overlay" class="expense-modal-overlay">
         <div class="expense-modal">
           <div class="expense-modal-header">
@@ -169,6 +170,39 @@
             </div>
 
             <button id="submitBtn" class="expense-submit-button">추가</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 상세 내역 모달 -->
+      <div id="expense-detail-overlay" class="expense-modal-overlay">
+        <div class="expense-modal">
+          <div class="expense-modal-header">
+            <span class="expense-modal-title">항목 상세</span>
+            <button id="closeDetailModal" class="expense-modal-close">✕</button>
+          </div>
+
+          <div class="expense-modal-body expense-detail-body">
+            <div class="expense-detail-row">
+              <span class="expense-detail-label">제목</span>
+              <span id="detail-title" class="expense-detail-value"></span>
+            </div>
+            <div class="expense-detail-row">
+              <span class="expense-detail-label">금액</span>
+              <span id="detail-amount" class="expense-detail-value"></span>
+            </div>
+            <div class="expense-detail-row">
+              <span class="expense-detail-label">날짜</span>
+              <span id="detail-date" class="expense-detail-value"></span>
+            </div>
+            <div class="expense-detail-row">
+              <span class="expense-detail-label">카테고리</span>
+              <span id="detail-category" class="expense-detail-value"></span>
+            </div>
+            <div class="expense-detail-row">
+              <span class="expense-detail-label">결제수단</span>
+              <span id="detail-payment" class="expense-detail-value"></span>
+            </div>
           </div>
         </div>
       </div>

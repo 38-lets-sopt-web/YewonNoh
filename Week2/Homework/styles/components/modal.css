@@ -84,3 +84,31 @@
 .expense-submit-button:hover {
   opacity: 0.9;
 }
+
+.expense-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.expense-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-light-gray);
+}
+
+.expense-detail-row:last-child {
+  border-bottom: none;
+}
+
+.expense-detail-label {
+  width: 80px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.expense-detail-value {
+  flex: 1;
+}

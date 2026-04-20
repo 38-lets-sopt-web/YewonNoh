@@ -25,6 +25,15 @@ const openBtn = document.getElementById('addBtn');
 const closeBtn = document.getElementById('closeModal');
 const submitBtn = document.getElementById('submitBtn');
 
+const detailModal = document.getElementById('expense-detail-overlay');
+const closeDetailBtn = document.getElementById('closeDetailModal');
+
+const detailTitle = document.getElementById('detail-title');
+const detailAmount = document.getElementById('detail-amount');
+const detailDate = document.getElementById('detail-date');
+const detailCategory = document.getElementById('detail-category');
+const detailPayment = document.getElementById('detail-payment');
+
 amountInput.addEventListener('input', (e) => {
   e.target.value = e.target.value.replace(/[^0-9]/g, '');
 });
@@ -48,7 +57,7 @@ function render(list) {
 
     tr.innerHTML = `
       <td><input type="checkbox" class="expense-row-checkbox" data-id="${item.id}" /></td>
-      <td>${item.title}</td>
+      <td class="expense-title-cell">${item.title}</td>
       <td class="${item.amount > 0 ? 'plus' : 'minus'}">
         ${formatAmount(item.amount)}
       </td>
@@ -57,8 +66,14 @@ function render(list) {
       <td>${item.payment}</td>
     `;
 
-    tr.querySelector('td:nth-child(2)').addEventListener('click', () => {
-      alert(JSON.stringify(item, null, 2));
+    tr.querySelector('.expense-title-cell').addEventListener('click', () => {
+      detailTitle.textContent = item.title;
+      detailAmount.textContent = formatAmount(item.amount);
+      detailDate.textContent = item.date;
+      detailCategory.textContent = item.category;
+      detailPayment.textContent = item.payment;
+
+      detailModal.classList.add('active');
     });
 
     tbody.appendChild(tr);
@@ -111,7 +126,7 @@ function filterData() {
 function resetFilter() {
   titleInput.value = '';
   selects.forEach(s => (s.value = '전체'));
-  render(data);
+  sortData(sortSelect.value);
 }
 
 function deleteSelected() {
@@ -159,6 +174,16 @@ closeBtn.addEventListener('click', () => {
 modal.addEventListener('click', e => {
   if (e.target === modal) {
     modal.classList.remove('active');
+  }
+});
+
+closeDetailBtn.addEventListener('click', () => {
+  detailModal.classList.remove('active');
+});
+
+detailModal.addEventListener('click', (e) => {
+  if (e.target === detailModal) {
+    detailModal.classList.remove('active');
   }
 });
 
