@@ -1,4 +1,9 @@
 export const dom = {
+  /* header */
+  header: {
+    profileLink: document.querySelector('.profile')
+  },
+
   /* filter */
   filter: {
     titleInput: document.querySelector('.filter-item.title input'),

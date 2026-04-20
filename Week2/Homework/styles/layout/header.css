@@ -22,6 +22,12 @@
   font-weight: var(--font-weight-regular);
 }
 
+.profile {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .profile img {
   width: 2.5rem;
   height: 2.5rem;

@@ -3,6 +3,12 @@ import { saveData } from "../data/storage.js";
 import { openModal, closeModal } from "../ui/modal.js";
 
 export function bindEvents(state, dom, updateView) {
+  /* 프로필 클릭 시 새로고침 */
+  dom.header.profileLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    location.reload();
+  });
+
   /* 숫자 입력 제한 */
   dom.modal.inputs.amount.addEventListener("input", (e) => {
     e.target.value = e.target.value.replace(/[^0-9]/g, "");
