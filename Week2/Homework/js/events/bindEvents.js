@@ -60,7 +60,7 @@ export function bindEvents(state, dom, updateView) {
 
   /* 모달 */
   dom.modal.openBtn.addEventListener("click", () =>
-    openModal(dom.modal.container),
+    openModal(dom.modal.container, dom.modal.inputs),
   );
   dom.modal.closeBtn.addEventListener("click", () =>
     closeModal(dom.modal.container),
@@ -89,8 +89,8 @@ export function bindEvents(state, dom, updateView) {
       !title.value ||
       !amount.value ||
       !date.value ||
-      !category.value ||
-      !payment.value
+      !category.value || category.value === "선택" ||
+      !payment.value || payment.value === "선택"
     ) {
       alert("값을 입력하세요");
       return;

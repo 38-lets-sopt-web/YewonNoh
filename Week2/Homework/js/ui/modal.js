@@ -1,6 +1,15 @@
 import { formatAmount } from '../utils/formatAmount.js';
 
-export function openModal(modal) {
+export function openModal(modal, inputs) {
+  if (inputs) {
+    inputs.title.value = '';
+    inputs.amount.value = '';
+    inputs.type.value = '지출';
+    inputs.date.value = '';
+    inputs.category.value = '선택';
+    inputs.payment.value = '선택';
+  }
+
   modal.classList.add('active');
 }
 

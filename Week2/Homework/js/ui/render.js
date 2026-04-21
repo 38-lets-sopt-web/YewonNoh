@@ -32,4 +32,9 @@ export function render(list, dom) {
 
   totalEl.textContent = formatAmount(total);
   totalEl.className = total > 0 ? "plus" : total < 0 ? "minus" : "";
+
+  const all = document.querySelectorAll(".expense-row-checkbox");
+  const checked = document.querySelectorAll(".expense-row-checkbox:checked");
+
+  checkAll.checked = all.length > 0 && all.length === checked.length;
 }
