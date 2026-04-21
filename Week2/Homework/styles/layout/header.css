@@ -1,4 +1,6 @@
 .header {
+  position: sticky;
+  top: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -6,6 +8,7 @@
   color: var(--color-white);
   height: 5rem;
   padding: 0 5rem;
+  z-index: 5;
 }
 
 .header-left {
