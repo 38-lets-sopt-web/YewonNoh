@@ -1,29 +1,12 @@
 export function getFilteredData(data, filters) {
-  let filtered = [...data];
-
   const { title, type, category, payment } = filters;
 
-  if (title) {
-    filtered = filtered.filter(d =>
-      d.title.toLowerCase().includes(title)
-    );
-  }
-
-  if (type !== '전체') {
-    filtered = filtered.filter(d =>
-      type === '수입' ? d.amount > 0 : d.amount < 0
-    );
-  }
-
-  if (category !== '전체') {
-    filtered = filtered.filter(d => d.category === category);
-  }
-
-  if (payment !== '전체') {
-    filtered = filtered.filter(d => d.payment === payment);
-  }
-
-  return filtered;
+  return data.filter(d =>
+    (!title || d.title.toLowerCase().includes(title)) &&
+    (type === '전체' || (type === '수입' ? d.amount > 0 : d.amount < 0)) &&
+    (category === '전체' || d.category === category) &&
+    (payment === '전체' || d.payment === payment)
+  );
 }
 
 export function getSortedData(list, sortType) {
