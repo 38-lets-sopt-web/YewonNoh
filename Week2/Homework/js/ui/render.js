@@ -36,5 +36,5 @@ export function render(list, dom) {
   const all = document.querySelectorAll(".expense-row-checkbox");
   const checked = document.querySelectorAll(".expense-row-checkbox:checked");
 
-  checkAll.checked = all.length > 0 && all.length === checked.length;
+  dom.table.checkAll.checked = all.length > 0 && all.length === checked.length;
 }
