@@ -25,13 +25,13 @@
   font-weight: var(--font-weight-regular);
 }
 
-.profile {
+.reload {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.profile img {
+.reload img {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;

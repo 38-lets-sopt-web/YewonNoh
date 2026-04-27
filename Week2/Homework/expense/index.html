@@ -10,8 +10,8 @@
   <body>
     <header class="header">
       <div class="header-left">
-        <button class="profile">
-          <img src="./images/profile.jpg" alt="profile" />
+        <button class="reload" aria-label="페이지 새로고침">
+          <img src="./images/profile.jpg" alt="reload"/>
         </button>
       </div>
       <div class="header-center">
@@ -24,16 +24,16 @@
     <main>
       <!-- 검색 필터 -->
       <section class="filter-section">
-        <h1 class="filter-heading">검색 필터</h1>
+        <h2 class="filter-heading">검색 필터</h2>
 
         <div class="filter-item title">
-          <label>제목</label>
-          <input type="text" placeholder="내역을 입력하세요" />
+          <label for="filter-title">제목</label>
+          <input type="text" id="filter-title" placeholder="내역을 입력하세요" />
         </div>
 
         <div class="filter-item">
-          <label>유형</label>
-          <select>
+          <label for="filter-type">유형</label>
+          <select id="filter-type">
             <option>전체</option>
             <option>수입</option>
             <option>지출</option>
@@ -41,8 +41,8 @@
         </div>
 
         <div class="filter-item">
-          <label>카테고리</label>
-          <select>
+          <label for="filter-category">카테고리</label>
+          <select id="filter-category">
             <option>전체</option>
             <option>교통</option>
             <option>문화</option>
@@ -54,8 +54,8 @@
         </div>
 
         <div class="filter-item">
-          <label>결제수단</label>
-          <select>
+          <label for="filter-payment">결제수단</label>
+          <select id="filter-payment">
             <option>전체</option>
             <option>신용카드</option>
             <option>체크카드</option>
@@ -112,21 +112,21 @@
 
       <!-- 내역 추가 모달 -->
       <div id="expense-modal-overlay" class="expense-modal-overlay">
-        <div class="expense-modal">
+        <div class="expense-modal" role="dialog" aria-modal="true" aria-labelledby="expense-modal-title">
           <div class="expense-modal-header">
-            <span class="expense-modal-title">내역 추가</span>
-            <button id="closeModal" class="expense-modal-close">✕</button>
+            <span class="expense-modal-title" id="expense-modal-title">내역 추가</span>
+            <button id="closeModal" class="expense-modal-close" aria-label="모달 닫기">✕</button>
           </div>
 
           <div class="expense-modal-body">
             <div class="expense-field">
-              <label class="expense-label">제목</label>
+              <label for="input-title" class="expense-label">제목</label>
               <input id="input-title" class="expense-input" placeholder="제목을 입력하세요" />
             </div>
 
             <div class="expense-input-row">
               <div class="expense-field">
-                <label class="expense-label">유형</label>
+                <label for="input-type" class="expense-label">유형</label>
                 <select id="input-type" class="expense-select">
                   <option value="지출">지출 (-)</option>
                   <option value="수입">수입 (+)</option>
@@ -134,19 +134,19 @@
               </div>
 
               <div class="expense-field">
-                <label class="expense-label">금액 (숫자만)</label>
+                <label for="input-amount" class="expense-label">금액 (숫자만)</label>
                 <input id="input-amount" class="expense-input" type="number" inputmode="numeric" placeholder="금액을 입력하세요" />
               </div>
             </div>
 
             <div class="expense-field">
-              <label class="expense-label">날짜</label>
+              <label for="input-date" class="expense-label">날짜</label>
               <input id="input-date" class="expense-input" type="date" />
             </div>
 
             <div class="expense-input-row">
               <div class="expense-field">
-                <label class="expense-label">카테고리</label>
+                <label for="input-category" class="expense-label">카테고리</label>
                 <select id="input-category" class="expense-select">
                   <option>선택</option>
                   <option>교통</option>
@@ -159,7 +159,7 @@
               </div>
 
               <div class="expense-field">
-                <label class="expense-label">결제수단</label>
+                <label for="input-payment" class="expense-label">결제수단</label>
                 <select id="input-payment" class="expense-select">
                   <option>선택</option>
                   <option>신용카드</option>
@@ -176,10 +176,10 @@
 
       <!-- 상세 내역 모달 -->
       <div id="expense-detail-overlay" class="expense-modal-overlay">
-        <div class="expense-modal">
+        <div class="expense-modal" role="dialog" aria-modal="true" aria-labelledby="detail-modal-title">
           <div class="expense-modal-header">
-            <span class="expense-modal-title">항목 상세</span>
-            <button id="closeDetailModal" class="expense-modal-close">✕</button>
+            <span id="detail-modal-title" class="expense-modal-title">항목 상세</span>
+            <button id="closeDetailModal" class="expense-modal-close" aria-label="모달 닫기">✕</button>
           </div>
 
           <div class="expense-modal-body expense-detail-body">

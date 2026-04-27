@@ -1,7 +1,7 @@
 export const dom = {
   /* header */
   header: {
-    profileLink: document.querySelector('.profile')
+    profileLink: document.querySelector('.reload')
   },
 
   /* filter */
