@@ -24,11 +24,7 @@ export function bindEvents(state, dom, updateView) {
 
   document.addEventListener("change", (e) => {
     if (e.target.classList.contains("expense-row-checkbox")) {
-      const all = document.querySelectorAll(".expense-row-checkbox");
-      const checked = document.querySelectorAll(
-        ".expense-row-checkbox:checked",
-      );
-      dom.table.checkAll.checked = all.length === checked.length;
+      syncCheckAll(dom.table.checkAll);
     }
   });
 
@@ -39,6 +35,9 @@ export function bindEvents(state, dom, updateView) {
 
     state.data = deleteSelected(state.data, ids);
     saveData(state.data);
+
+    dom.table.checkAll.checked = false;
+    
     updateView();
   });
 
