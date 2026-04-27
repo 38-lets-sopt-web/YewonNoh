@@ -13,7 +13,7 @@ const state = {
 
 function updateView() {
   const filters = {
-    title: dom.filter.titleInput.value.toLowerCase(),
+    title: dom.filter.titleInput.value.trim().toLowerCase(),
     type: dom.filter.selects[0].value,
     category: dom.filter.selects[1].value,
     payment: dom.filter.selects[2].value,
