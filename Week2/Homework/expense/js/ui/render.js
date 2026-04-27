@@ -1,15 +1,14 @@
 import { formatAmount } from "../utils/formatAmount.js";
 import { openDetailModal } from "./modal.js";
+import { calculateTotal } from "../logic/expenseLogic.js";
+import { syncCheckAll } from "../utils/syncCheckAll.js";
 
 export function render(list, dom) {
   const { tbody, totalEl } = dom.table;
 
   tbody.innerHTML = "";
-  let total = 0;
 
   list.forEach((item) => {
-    total += item.amount;
-
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
@@ -29,6 +28,8 @@ export function render(list, dom) {
 
     tbody.appendChild(tr);
   });
+
+  const total = calculateTotal(list);
 
   totalEl.textContent = formatAmount(total);
   totalEl.className = total > 0 ? "plus" : total < 0 ? "minus" : "";

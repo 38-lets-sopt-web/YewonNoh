@@ -20,3 +20,7 @@ export function getSortedData(list, sortType) {
 export function deleteSelected(data, ids) {
   return data.filter(d => !ids.includes(d.id));
 }
+
+export function calculateTotal(list) {
+  return list.reduce((sum, item) => sum + item.amount, 0);
+}
