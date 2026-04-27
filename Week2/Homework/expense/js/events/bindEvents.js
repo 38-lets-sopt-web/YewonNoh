@@ -1,6 +1,7 @@
 import { deleteSelected } from "../logic/expenseLogic.js";
 import { saveData } from "../data/storage.js";
 import { openModal, closeModal } from "../ui/modal.js";
+import { validateInput } from "../utils/validateInput.js";
 
 export function bindEvents(state, dom, updateView) {
   /* 프로필 클릭 시 새로고침 */
@@ -83,18 +84,14 @@ export function bindEvents(state, dom, updateView) {
 
   /* 데이터 추가 */
   dom.modal.submitBtn.addEventListener("click", () => {
-    const { title, amount, type, date, category, payment } = dom.modal.inputs;
+    const inputs = dom.modal.inputs;
 
-    if (
-      !title.value ||
-      !amount.value ||
-      !date.value ||
-      !category.value || category.value === "선택" ||
-      !payment.value || payment.value === "선택"
-    ) {
+    if (!validateInput(inputs)) {
       alert("값을 입력하세요");
       return;
     }
+
+    const { title, amount, type, date, category, payment } = inputs;
 
     const newItem = {
       id: Date.now(),
