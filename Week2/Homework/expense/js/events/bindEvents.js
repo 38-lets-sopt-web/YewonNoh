@@ -2,10 +2,11 @@ import { deleteSelected } from "../logic/expenseLogic.js";
 import { saveData } from "../data/storage.js";
 import { openModal, closeModal } from "../ui/modal.js";
 import { validateInput } from "../utils/validateInput.js";
+import { syncCheckAll } from "../utils/syncCheckAll.js";
 
 export function bindEvents(state, dom, updateView) {
   /* 프로필 클릭 시 새로고침 */
-  dom.header.profileLink.addEventListener('click', (e) => {
+  dom.header.profileLink.addEventListener("click", (e) => {
     e.preventDefault();
     location.reload();
   });
@@ -41,17 +42,35 @@ export function bindEvents(state, dom, updateView) {
     updateView();
   });
 
-  /* 필터 */
-  dom.table.sortSelect.addEventListener("change", updateView);
-  dom.filter.applyBtn.addEventListener("click", updateView);
+  /* 정렬 */
+  dom.table.sortSelect.addEventListener("change", () => {
+    state.sortOrder = dom.table.sortSelect.value;
+    updateView();
+  });
 
+  /* 필터 적용 */
+  dom.filter.applyBtn.addEventListener("click", () => {
+    state.filters = {
+      title: dom.filter.titleInput.value.trim().toLowerCase(),
+      type: dom.filter.selects[0].value,
+      category: dom.filter.selects[1].value,
+      payment: dom.filter.selects[2].value,
+    };
+
+    updateView();
+  });
+
+  /* 필터 초기화 */
   dom.filter.resetBtn.addEventListener("click", () => {
     dom.filter.titleInput.value = "";
     dom.filter.selects.forEach((s) => (s.value = "전체"));
 
-    document.querySelectorAll(".expense-row-checkbox").forEach((cb) => {
-      cb.checked = false;
-    });
+    state.filters = {
+      title: "",
+      type: "전체",
+      category: "전체",
+      payment: "전체",
+    };
 
     dom.table.checkAll.checked = false;
 
@@ -62,6 +81,7 @@ export function bindEvents(state, dom, updateView) {
   dom.modal.openBtn.addEventListener("click", () =>
     openModal(dom.modal.container, dom.modal.inputs),
   );
+
   dom.modal.closeBtn.addEventListener("click", () =>
     closeModal(dom.modal.container),
   );

@@ -9,18 +9,18 @@ initData(initialData);
 
 const state = {
   data: getData(),
+  filters: {
+    title: "",
+    type: "전체",
+    category: "전체",
+    payment: "전체",
+  },
+  sortOrder: "desc",
 };
 
 function updateView() {
-  const filters = {
-    title: dom.filter.titleInput.value.trim().toLowerCase(),
-    type: dom.filter.selects[0].value,
-    category: dom.filter.selects[1].value,
-    payment: dom.filter.selects[2].value,
-  };
-
-  const filtered = getFilteredData(state.data, filters);
-  const sorted = getSortedData(filtered, dom.table.sortSelect.value);
+  const filtered = getFilteredData(state.data, state.filters);
+  const sorted = getSortedData(filtered, state.sortOrder);
 
   render(sorted, dom);
 }
