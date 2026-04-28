@@ -1,0 +1,85 @@
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.card .interest-title {
+  margin: 0.75rem;
+  font-size: var(--font-size-md);
+  text-align: left;
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding: 0 0.7rem 0.7rem;
+}
+
+button {
+  flex: 1;
+  padding: 0.3rem 0;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.like {
+  background: var(--color-like);
+}
+
+.hate {
+  background: var(--color-hate);
+}
+
+.like:hover {
+  background: var(--color-like-hover);
+}
+
+.hate:hover {
+  background: var(--color-hate-hover);
+}
+
+@media (max-width: 1200px) {
+  .card-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .card-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

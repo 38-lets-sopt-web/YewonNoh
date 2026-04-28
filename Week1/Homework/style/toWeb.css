@@ -1,0 +1,23 @@
+.message-box {
+  padding: 1.5rem;
+  background: var(--color-white);
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.message-box p {
+  position: relative;
+  margin: 0.75rem 0;
+  padding-left: 2.5rem;
+}
+
+.message-box p::before {
+  content: "📢";
+  position: absolute;
+  left: 0;
+}
+
+.message-box p::after {
+  content: "✅";
+  margin-left: 0.5rem;
+}

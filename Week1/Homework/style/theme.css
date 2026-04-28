@@ -1,0 +1,20 @@
+:root {
+  --color-primary: #9ae6e4;
+  --color-primary-hover: #8fd4d2;
+  --color-like: #cfe8ff;
+  --color-like-hover: #90caff;
+  --color-hate: #ffd6d6;
+  --color-hate-hover: #ff9e9e;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-background: #e5f3f2;
+
+  --font-size-sm: 0.75rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+}

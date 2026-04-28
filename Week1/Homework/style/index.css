@@ -1,0 +1,14 @@
+@import "./reset.css";
+@import "./theme.css";
+@import "./header.css";
+@import "./footer.css";
+@import "./main.css";
+@import "./navbar.css";
+@import "./photoDump.css";
+@import "./toWeb.css";
+@import "./like.css";
+@import "./interest.css";
+
+body {
+  background-color: var(--color-background);
+}
