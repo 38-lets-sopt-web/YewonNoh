@@ -43,4 +43,10 @@ export default defineConfig([
       'prettier/prettier': 'warn',
     },
   },
+  {
+    files: ['vite.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ]);
