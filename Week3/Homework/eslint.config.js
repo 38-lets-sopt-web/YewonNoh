@@ -32,6 +32,7 @@ export default defineConfig([
       'dot-notation': 'warn',
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
       'react/destructuring-assignment': 'warn',
       'react/jsx-pascal-case': 'warn',
       'react/no-direct-mutation-state': 'warn',
