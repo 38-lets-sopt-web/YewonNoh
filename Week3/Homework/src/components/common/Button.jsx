@@ -13,6 +13,8 @@ const Button = ({ children, onClick, variant = 'default', active = false }) => {
     secondary: active
       ? 'bg-stone-400 text-white'
       : 'bg-stone-200 text-white/80',
+
+    danger: 'bg-amber-400 text-white',
   };
 
   return (

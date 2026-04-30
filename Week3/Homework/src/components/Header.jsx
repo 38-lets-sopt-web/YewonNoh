@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import { Button } from '@components/index';
 
-const Header = () => {
-  const [tab, setTab] = useState('game');
-
+const Header = ({ tab, setTab }) => {
   return (
     <header className="w-full bg-amber-100 rounded-xl p-8 flex items-center">
       <div className="flex items-center gap-4">
