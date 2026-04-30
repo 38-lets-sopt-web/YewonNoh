@@ -1,9 +1,11 @@
 import { Header } from '@components/index';
+import { GamePage } from '@pages/index';
 
 const App = () => {
   return (
-    <div className="p-6 bg-slate-100 min-h-screen">
+    <div className="p-6 bg-amber-50 min-h-screen">
       <Header />
+      <GamePage />
     </div>
   );
 };

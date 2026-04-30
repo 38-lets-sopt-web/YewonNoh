@@ -12,9 +12,7 @@ const Button = ({ children, onClick, variant = 'default', active = false }) => {
 
     secondary: active
       ? 'bg-stone-400 text-white'
-      : 'bg-stone-200 text-stone-600',
-
-    danger: active ? 'bg-red-400 text-white' : 'bg-red-200 text-red-600',
+      : 'bg-stone-200 text-white/80',
   };
 
   return (
