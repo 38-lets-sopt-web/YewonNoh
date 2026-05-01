@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { LeftPanel, GameSection, ResultModal } from '@components/index';
 import { LEVEL_CONFIG } from '@constants/game';
 import initCells from '@utils/initCells';
 import useTimer from '@hooks/useTimer';
 import useMoleSpawner from '@hooks/useMoleSpawner';
+import { saveRanking } from '@utils/rankingStorage';
 
 const GamePage = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -15,11 +16,11 @@ const GamePage = () => {
   const [score, setScore] = useState(0);
   const [success, setSuccess] = useState(0);
   const [fail, setFail] = useState(0);
-
   const [cells, setCells] = useState(() => initCells(boardSize));
   const [message, setMessage] = useState('');
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const hasSavedRef = useRef(false);
 
   const resetGame = () => {
     setCells(initCells(boardSize));
@@ -31,6 +32,7 @@ const GamePage = () => {
   };
 
   const handleStart = () => {
+    hasSavedRef.current = false;
     resetGame();
     setIsPlaying(true);
   };
@@ -47,14 +49,26 @@ const GamePage = () => {
     setTime(time);
   };
 
-  useTimer(isPlaying, setTime, () => {
+  const handleGameEnd = () => {
+    const isFailedGame = success === 0 && score < 0;
+
+    if (!hasSavedRef.current && !isFailedGame) {
+      hasSavedRef.current = true;
+
+      saveRanking({
+        id: Date.now(),
+        level,
+        score,
+        time: new Date().toLocaleString('ko-KR'),
+      });
+    }
+
     setTime(0.0);
     setIsPlaying(false);
-    setCells(initCells(boardSize));
-    setMessage('');
     setIsModalOpen(true);
-  });
+  };
 
+  useTimer(isPlaying, setTime, handleGameEnd);
   useMoleSpawner(isPlaying, setCells);
 
   const handleClick = (cell) => {
@@ -77,7 +91,7 @@ const GamePage = () => {
         );
         setMessage('');
       }, 700);
-    } else if (cell.type === 'bomb') {
+    } else {
       setScore((s) => s - 1);
       setFail((f) => f + 1);
       setMessage('땡!');
@@ -88,9 +102,7 @@ const GamePage = () => {
         )
       );
 
-      setTimeout(() => {
-        setMessage('');
-      }, 300);
+      setTimeout(() => setMessage(''), 300);
     }
   };
 
