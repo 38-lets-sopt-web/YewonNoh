@@ -50,9 +50,9 @@ const GamePage = () => {
   };
 
   const handleGameEnd = () => {
-    const isFailedGame = success === 0 && score < 0;
+    const shouldSave = success > 0 && score >= 0;
 
-    if (!hasSavedRef.current && !isFailedGame) {
+    if (!hasSavedRef.current && shouldSave) {
       hasSavedRef.current = true;
 
       saveRanking({
