@@ -1,20 +1,22 @@
-import { useState } from 'react';
 import { Button, GameBoard } from '@components/index';
-import { LEVEL_CONFIG } from '@constants/game';
 
-const GameSection = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [level, setLevel] = useState(2);
-
-  const { size: boardSize } = LEVEL_CONFIG[level];
-
+const GameSection = ({
+  isPlaying,
+  onStart,
+  onStop,
+  level,
+  onLevelChange,
+  boardSize,
+  cells,
+  onClick,
+}) => {
   return (
     <div className="flex-1 bg-amber-100 rounded-xl p-6">
       <div className="flex justify-between items-center mb-6">
         <div className="relative inline-block">
           <select
             value={level}
-            onChange={(e) => setLevel(Number(e.target.value))}
+            onChange={(e) => onLevelChange(Number(e.target.value))}
             disabled={isPlaying}
             className="
               appearance-none
@@ -38,25 +40,17 @@ const GameSection = () => {
         </div>
 
         <div className="flex gap-2">
-          <Button
-            variant="primary"
-            active={isPlaying}
-            onClick={() => setIsPlaying(true)}
-          >
+          <Button variant="primary" active={isPlaying} onClick={onStart}>
             시작
           </Button>
 
-          <Button
-            variant="secondary"
-            active={!isPlaying}
-            onClick={() => setIsPlaying(false)}
-          >
+          <Button variant="secondary" active={!isPlaying} onClick={onStop}>
             중단
           </Button>
         </div>
       </div>
 
-      <GameBoard boardSize={boardSize} />
+      <GameBoard boardSize={boardSize} cells={cells} onClick={onClick} />
     </div>
   );
 };
