@@ -3,7 +3,7 @@ import { vars } from '@/styles/theme.css';
 
 export const wrapper = style({
   width: '100%',
-  maxWidth: '30rem',
+  maxWidth: '38rem',
   margin: '3rem auto 0',
 });
 
@@ -14,9 +14,9 @@ export const card = style({
 });
 
 export const title = style({
-  marginBottom: vars.spacing.lg,
+  marginBottom: vars.spacing.xl,
   color: vars.color.text,
-  fontSize: vars.font.size.lg,
+  fontSize: vars.font.size.xl,
   fontWeight: vars.font.weight.bold,
   lineHeight: vars.font.lineHeight.md,
   textAlign: 'center',
@@ -26,27 +26,27 @@ export const inputGroup = style({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  gap: '1.25rem',
+  gap: '1.5rem',
   marginBottom: vars.spacing.xl,
 });
 
 export const loginWrapper = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '0.25rem',
-  marginTop: vars.spacing.sm,
+  gap: vars.spacing.xs,
+  marginTop: vars.spacing.md,
 });
 
 export const loginText = style({
   color: vars.color.placeholder,
-  fontSize: vars.font.size.xs,
+  fontSize: vars.font.size.sm,
   fontWeight: vars.font.weight.medium,
   lineHeight: vars.font.lineHeight.sm,
 });
 
 export const loginLink = style({
   color: vars.color.primaryDark,
-  fontSize: vars.font.size.xs,
+  fontSize: vars.font.size.sm,
   fontWeight: vars.font.weight.semibold,
   lineHeight: vars.font.lineHeight.sm,
   textDecoration: 'none',

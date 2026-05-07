@@ -3,8 +3,8 @@ import { vars } from '@/styles/theme.css';
 
 export const wrapper = style({
   width: '100%',
-  maxWidth: '22.5rem',
-  margin: '13.5rem auto 0',
+  maxWidth: '28rem',
+  margin: '12rem auto 0',
 });
 
 export const card = style({
@@ -14,9 +14,9 @@ export const card = style({
 });
 
 export const title = style({
-  marginBottom: vars.spacing.lg,
-  color: vars.color.text,
-  fontSize: vars.font.size.lg,
+  marginBottom: vars.spacing.xl,
+  color: vars.color.navy,
+  fontSize: vars.font.size.xxl,
   fontWeight: vars.font.weight.bold,
   lineHeight: vars.font.lineHeight.md,
   textAlign: 'center',
@@ -26,14 +26,14 @@ export const inputGroup = style({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  gap: '0.875rem',
+  gap: vars.spacing.md,
   marginBottom: vars.spacing.xl,
 });
 
 export const signup = style({
-  marginTop: vars.spacing.sm,
+  marginTop: vars.spacing.md,
   color: vars.color.primaryDark,
-  fontSize: vars.font.size.xs,
+  fontSize: vars.font.size.sm,
   fontWeight: vars.font.weight.semibold,
   textDecoration: 'none',
   cursor: 'pointer',

@@ -10,7 +10,7 @@ export const wrapper = style({
 
 export const label = style({
   color: vars.color.subText,
-  fontSize: vars.font.size.xs,
+  fontSize: vars.font.size.sm,
   fontWeight: vars.font.weight.semibold,
   lineHeight: vars.font.lineHeight.sm,
 });
@@ -22,13 +22,13 @@ export const inputContainer = style({
 
 export const input = style({
   width: '100%',
-  height: '2rem',
-  padding: '0 0.5rem',
-  border: `1.8px solid ${vars.color.border}`,
-  borderRadius: vars.radius.sm,
+  height: '3rem',
+  padding: '0 1rem',
+  border: `0.1125rem solid ${vars.color.border}`,
+  borderRadius: vars.radius.md,
   backgroundColor: vars.color.white,
   color: vars.color.text,
-  fontSize: vars.font.size.xs,
+  fontSize: vars.font.size.sm,
   lineHeight: vars.font.lineHeight.sm,
   outline: 'none',
   transition: `border-color ${vars.transition.fast}`,
@@ -47,7 +47,7 @@ export const input = style({
 export const rightElement = style({
   position: 'absolute',
   top: '50%',
-  right: '0.875rem',
+  right: '1rem',
   transform: 'translateY(-50%)',
   display: 'flex',
   alignItems: 'center',

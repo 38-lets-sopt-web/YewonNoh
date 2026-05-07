@@ -25,7 +25,7 @@ export const left = style({
 
 export const title = style({
   color: vars.color.white,
-  fontSize: vars.font.size.xxl,
+  fontSize: vars.font.size.xl,
   fontWeight: vars.font.weight.bold,
   margin: 0,
 });
@@ -46,8 +46,8 @@ export const nav = style({
 
 export const menu = style({
   color: vars.color.border,
-  fontSize: vars.font.size.lg,
-  fontWeight: vars.font.weight.bold,
+  fontSize: vars.font.size.md,
+  fontWeight: vars.font.weight.semibold,
   lineHeight: vars.font.lineHeight.sm,
   cursor: 'pointer',
   transition: `opacity ${vars.transition.fast}`,
@@ -61,7 +61,7 @@ export const menu = style({
 
 export const activeMenu = style({
   color: vars.color.white,
-  fontSize: vars.font.size.lg,
+  fontSize: vars.font.size.md,
   fontWeight: vars.font.weight.bold,
   lineHeight: vars.font.lineHeight.sm,
   cursor: 'pointer',

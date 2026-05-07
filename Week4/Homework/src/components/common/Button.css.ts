@@ -3,12 +3,12 @@ import { vars } from '@/styles/theme.css';
 
 export const button = style({
   width: '100%',
-  height: '2rem',
+  height: '3rem',
   border: 'none',
-  borderRadius: vars.radius.sm,
+  borderRadius: vars.radius.md,
   backgroundColor: vars.color.primary,
   color: vars.color.white,
-  fontSize: vars.font.size.xs,
+  fontSize: vars.font.size.sm,
   fontWeight: vars.font.weight.bold,
   lineHeight: vars.font.lineHeight.sm,
   cursor: 'pointer',
