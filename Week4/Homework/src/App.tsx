@@ -1,6 +1,6 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Login, Signup, Mypage, Members } from '@pages/index';
+import { Login, Signup, Mypage, Members, MemberDetail } from '@pages/index';
 import { RootLayout } from '@layouts/index';
 
 const router = createBrowserRouter([
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/members',
         element: <Members />,
+      },
+      {
+        path: '/members/:memberId',
+        element: <MemberDetail />,
       },
     ],
   },

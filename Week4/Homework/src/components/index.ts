@@ -4,4 +4,4 @@ export { default as Button } from './common/Button';
 
 // Member
 export { default as MemberCard } from './members/MemberCard';
-export { default as SearchResultCard } from './members/SearchResultCard';
+export { default as MemberInfoCard } from './members/MemberInfoCard';

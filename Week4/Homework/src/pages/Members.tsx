@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Input, Button, MemberCard, SearchResultCard } from '@components/index';
+import { useNavigate } from 'react-router-dom';
+import { Input, Button, MemberCard, MemberInfoCard } from '@components/index';
 import * as styles from './Members.css';
 
 const DUMMY_MEMBERS = [
@@ -62,11 +63,17 @@ const Members = () => {
 
   const isDisabled = !memberId.trim();
 
+  const navigate = useNavigate();
+
   const handleSearch = () => {
     const foundMember =
       DUMMY_MEMBERS.find(member => member.id === Number(memberId)) ?? null;
 
     setSearchedMember(foundMember);
+  };
+
+  const handleMoveDetail = (memberId: number) => {
+    navigate(`/members/${memberId}`);
   };
 
   return (
@@ -91,7 +98,7 @@ const Members = () => {
         <div className={styles.resultWrapper}>
           <h2 className={styles.resultTitle}>검색 결과</h2>
 
-          <SearchResultCard member={searchedMember} />
+          <MemberInfoCard member={searchedMember} />
         </div>
       </section>
 
@@ -104,7 +111,7 @@ const Members = () => {
               key={member.id}
               name={member.name}
               part={member.part}
-              onClick={() => {}}
+              onClick={() => handleMoveDetail(member.id)}
             />
           ))}
         </div>
