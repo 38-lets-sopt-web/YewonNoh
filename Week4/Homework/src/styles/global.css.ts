@@ -16,6 +16,10 @@ globalStyle('body', {
   backgroundColor: vars.color.background,
 });
 
+globalStyle('html::-webkit-scrollbar', {
+  display: 'none',
+});
+
 globalStyle('button', {
   padding: 0,
 });
