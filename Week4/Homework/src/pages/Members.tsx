@@ -1,75 +1,43 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input, Button, MemberCard, MemberInfoCard } from '@components/index';
 import * as styles from './Members.css';
-
-const DUMMY_MEMBERS = [
-  {
-    id: 1,
-    loginId: 'test1',
-    name: 'test1',
-    email: 'sopt@sopt.org',
-    age: 20,
-    part: '웹',
-  },
-  {
-    id: 2,
-    loginId: 'test2',
-    name: 'test2',
-    email: 'sopt@sopt.org',
-    age: 21,
-    part: 'iOS',
-  },
-  {
-    id: 3,
-    loginId: 'test3',
-    name: 'test3',
-    email: 'sopt@sopt.org',
-    age: 22,
-    part: '안드로이드',
-  },
-  {
-    id: 4,
-    loginId: 'test4',
-    name: 'test4',
-    email: 'sopt@sopt.org',
-    age: 23,
-    part: '서버',
-  },
-  {
-    id: 5,
-    loginId: 'test5',
-    name: 'test5',
-    email: 'sopt@sopt.org',
-    age: 24,
-    part: '기획',
-  },
-  {
-    id: 6,
-    loginId: 'test6',
-    name: 'test6',
-    email: 'sopt@sopt.org',
-    age: 25,
-    part: '디자인',
-  },
-];
+import { getUser, getUserList } from '@services/member';
+import type { MemberInfo, MemberListItem } from '@/types/member';
 
 const Members = () => {
-  const [memberId, setMemberId] = useState('');
+  const navigate = useNavigate();
 
-  const [searchedMember, setSearchedMember] = useState<
-    (typeof DUMMY_MEMBERS)[number] | null
-  >(null);
+  const [memberId, setMemberId] = useState('');
+  const [members, setMembers] = useState<MemberListItem[]>([]);
+  const [searchedMember, setSearchedMember] = useState<MemberInfo | null>(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await getUserList();
+
+        setMembers(response.data.users);
+      } catch {
+        alert('유저 목록을 불러오는데 실패했습니다.');
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const isDisabled = !memberId.trim();
 
-  const navigate = useNavigate();
+  const handleSearch = async () => {
+    try {
+      const response = await getUser(Number(memberId));
 
-  const handleSearch = () => {
-    const foundMember =
-      DUMMY_MEMBERS.find(member => member.id === Number(memberId)) ?? null;
+      setSearchedMember(response.data);
+    } catch {
+      setSearchedMember(null);
 
-    setSearchedMember(foundMember);
+      alert('유저 정보를 불러오는데 실패했습니다.');
+    }
   };
 
   const handleMoveDetail = (memberId: number) => {
@@ -106,7 +74,7 @@ const Members = () => {
         <h2 className={styles.memberTitle}>전체 멤버 리스트</h2>
 
         <div className={styles.memberGrid}>
-          {DUMMY_MEMBERS.map(member => (
+          {members.map(member => (
             <MemberCard
               key={member.id}
               name={member.name}

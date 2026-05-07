@@ -8,7 +8,7 @@ const RootLayout = () => {
 
   return (
     <>
-      <Header userName="" activeTab={activeTab} />
+      <Header activeTab={activeTab} />
       <Outlet />
     </>
   );

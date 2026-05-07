@@ -1,29 +1,35 @@
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 import { MemberInfoCard } from '@components/index';
 import * as styles from './MemberDetail.css';
-
-const DUMMY_MEMBERS = [
-  {
-    id: 1,
-    loginId: 'test1',
-    name: 'test1',
-    email: 'sopt@sopt.org',
-    age: 20,
-    part: '웹',
-  },
-];
+import { getUser } from '@services/member';
+import type { MemberInfo } from '@/types/member';
 
 const MemberDetail = () => {
   const navigate = useNavigate();
 
   const { memberId } = useParams();
 
-  const member = DUMMY_MEMBERS.find(member => member.id === Number(memberId));
+  const [member, setMember] = useState<MemberInfo | null>(null);
 
-  if (!member) {
-    return null;
-  }
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        if (!memberId) {
+          return;
+        }
+
+        const response = await getUser(Number(memberId));
+
+        setMember(response.data);
+      } catch {
+        alert('회원 정보를 불러오는데 실패했습니다.');
+      }
+    };
+
+    fetchUser();
+  }, [memberId]);
 
   return (
     <div className={styles.wrapper}>

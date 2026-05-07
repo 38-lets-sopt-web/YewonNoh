@@ -1,21 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Input, Button } from '@components/index';
 import * as styles from './Mypage.css';
 import { validateEmail } from '@utils/validation/mypageValidation';
-
-const DUMMY_USER = {
-  loginId: 'assignment',
-  part: '웹',
-  name: '예원',
-  email: 'sopt@sopt.org',
-  age: 24,
-};
+import { getUser, updateUser } from '@/services/member';
 
 const Mypage = () => {
-  const [name, setName] = useState(DUMMY_USER.name);
-  const [email, setEmail] = useState(DUMMY_USER.email);
-  const [age, setAge] = useState(String(DUMMY_USER.age));
+  const [loginId, setLoginId] = useState('');
+  const [part, setPart] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
   const [emailError, setEmailError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const userId = localStorage.getItem('userId');
+
+        if (!userId) {
+          return;
+        }
+
+        const response = await getUser(Number(userId));
+        const user = response.data;
+
+        setLoginId(user.loginId);
+        setPart(user.part);
+        setName(user.name);
+        setEmail(user.email);
+        setAge(String(user.age));
+      } catch {
+        alert('유저 정보를 불러오는데 실패했습니다.');
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   const isDisabled =
     !name.trim() || !email.trim() || !age.trim() || !!emailError;
@@ -27,15 +47,23 @@ const Mypage = () => {
     setEmailError(validateEmail(value));
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     try {
-      const requestBody = { name, email, age: Number(age) };
+      const userId = localStorage.getItem('userId');
 
-      console.log(requestBody);
+      if (!userId) {
+        return;
+      }
+
+      await updateUser(Number(userId), {
+        name,
+        email,
+        age: Number(age),
+      });
 
       alert(`${name}님의 정보 수정에 성공했습니다.`);
     } catch {
-      alert(`${DUMMY_USER.name}님의 정보 수정에 실패했습니다.`);
+      alert(`${name}님의 정보 수정에 실패했습니다.`);
     }
   };
 
@@ -46,12 +74,12 @@ const Mypage = () => {
       <section className={styles.profileCard}>
         <div className={styles.profileRow}>
           <span className={styles.label}>아이디</span>
-          <span className={styles.value}>{DUMMY_USER.loginId}</span>
+          <span className={styles.value}>{loginId}</span>
         </div>
 
         <div className={styles.profileRow}>
           <span className={styles.label}>파트</span>
-          <span className={styles.value}>{DUMMY_USER.part}</span>
+          <span className={styles.value}>{part}</span>
         </div>
       </section>
 
