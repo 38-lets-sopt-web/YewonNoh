@@ -1,11 +1,16 @@
 import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Login } from '@pages/index';
+
+const router = createBrowserRouter([
+  {
+    path: '/login',
+    element: <Login />,
+  },
+]);
 
 function App() {
-  return (
-    <>
-      <h1>Week4-Homework</h1>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
