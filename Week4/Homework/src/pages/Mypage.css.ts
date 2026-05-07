@@ -57,3 +57,12 @@ export const inputGroup = style({
   flexDirection: 'column',
   gap: vars.spacing.lg,
 });
+
+export const errorText = style({
+  width: '100%',
+  alignSelf: 'flex-start',
+  marginBottom: vars.spacing.md,
+  color: vars.color.danger,
+  fontSize: vars.font.size.sm,
+  fontWeight: vars.font.weight.medium,
+});

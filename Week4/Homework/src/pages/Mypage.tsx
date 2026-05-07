@@ -15,25 +15,27 @@ const Mypage = () => {
   const [name, setName] = useState(DUMMY_USER.name);
   const [email, setEmail] = useState(DUMMY_USER.email);
   const [age, setAge] = useState(String(DUMMY_USER.age));
+  const [emailError, setEmailError] = useState<string | null>(null);
 
-  const isDisabled = !name.trim() || !email.trim() || !age.trim();
+  const isDisabled =
+    !name.trim() || !email.trim() || !age.trim() || !!emailError;
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    setEmail(value);
+    setEmailError(validateEmail(value));
+  };
 
   const handleUpdate = () => {
-    const emailError = validateEmail(email);
-
-    if (emailError) {
-      alert(emailError);
-      return;
-    }
-
     try {
       const requestBody = { name, email, age: Number(age) };
 
       console.log(requestBody);
 
-      alert('정보 수정에 성공했습니다.');
+      alert(`${name}님의 정보 수정에 성공했습니다.`);
     } catch {
-      alert('정보 수정에 실패했습니다.');
+      alert(`${DUMMY_USER.name}님의 정보 수정에 실패했습니다.`);
     }
   };
 
@@ -67,7 +69,7 @@ const Mypage = () => {
           type="email"
           placeholder="이메일 입력"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={handleEmailChange}
         />
 
         <Input
@@ -78,6 +80,8 @@ const Mypage = () => {
           onChange={e => setAge(e.target.value)}
         />
       </div>
+
+      {emailError && <p className={styles.errorText}>{emailError}</p>}
 
       <Button disabled={isDisabled} onClick={handleUpdate}>
         정보 수정
