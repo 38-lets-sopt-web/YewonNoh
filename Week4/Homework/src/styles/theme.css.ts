@@ -4,6 +4,7 @@ export const [themeClass, vars] = createTheme({
   color: {
     primary: '#55D6FF',
     primaryDark: '#359AB9',
+    navy: '#16385B',
     text: '#1F2937',
     subText: '#4B5563',
     placeholder: '#9CA3AF',
@@ -24,6 +25,7 @@ export const [themeClass, vars] = createTheme({
       md: '1rem',
       lg: '1.25rem',
       xl: '1.5rem',
+      xxl: '2rem',
     },
 
     weight: {
