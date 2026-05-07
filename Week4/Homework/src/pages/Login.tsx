@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Input, Button } from '@components/index';
 import * as styles from './Login.css';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+import { signin } from '@services/auth';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ const LoginPage = () => {
     loginId: '',
     password: '',
   });
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
   const isDisabled = !form.loginId.trim() || !form.password.trim();
@@ -21,6 +24,8 @@ const LoginPage = () => {
         ...prev,
         [key]: e.target.value,
       }));
+
+      setErrorMessage('');
     };
 
   const handleSignup = async () => {
@@ -29,18 +34,20 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const requestBody = {
+      const response = await signin({
         loginId: form.loginId,
         password: form.password,
-      };
+      });
 
-      console.log(requestBody);
+      if (response.success) {
+        alert('로그인에 성공했습니다.');
 
-      alert('로그인 성공');
+        localStorage.setItem('userId', response.data.userId);
 
-      navigate('/mypage');
+        navigate('/mypage');
+      }
     } catch {
-      alert('로그인에 실패했습니다.');
+      setErrorMessage('아이디 또는 비밀번호가 올바르지 않습니다.');
     }
   };
 
@@ -83,6 +90,8 @@ const LoginPage = () => {
             }
           />
         </div>
+
+        {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
 
         <Button disabled={isDisabled} onClick={handleLogin}>
           로그인

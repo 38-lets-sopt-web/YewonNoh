@@ -6,6 +6,7 @@ import {
   SignupStepPassword,
   SignupStepProfile,
 } from '@components/index';
+import { signup } from '@services/auth';
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -28,22 +29,22 @@ const SignupPage = () => {
     }));
   };
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     try {
-      const requestBody = {
+      const response = await signup({
         loginId: form.loginId,
         password: form.password,
         name: form.name,
         email: form.email,
         age: Number(form.age),
         part: form.part,
-      };
+      });
 
-      console.log(requestBody);
+      if (response.success) {
+        alert(`${form.name}님의 회원가입이 완료되었습니다.`);
 
-      alert(`${form.name}님의 회원가입이 완료되었습니다.`);
-
-      navigate('/login');
+        navigate('/login', { replace: true });
+      }
     } catch {
       alert('회원가입에 실패했습니다.');
     }
