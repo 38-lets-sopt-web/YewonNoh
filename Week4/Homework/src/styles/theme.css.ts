@@ -11,6 +11,7 @@ export const [themeClass, vars] = createTheme({
     border: '#B8BEC6',
     white: '#FFFFFF',
     black: '#000000',
+    surface: '#F2F4F8',
     background: '#e3ebf3',
     danger: '#EF4444',
     success: '#22C55E',
