@@ -29,8 +29,11 @@ const useMoleSpawner = (isPlaying, setCells) => {
 
       timeoutId = setTimeout(() => {
         setCells((prev) =>
-          prev.map((c) => ({ ...c, active: false, type: null }))
+          prev.map((c) =>
+            c.type === 'hit' ? c : { ...c, active: false, type: null }
+          )
         );
+
         timeoutId = setTimeout(spawn, 400);
       }, 1000);
     };
