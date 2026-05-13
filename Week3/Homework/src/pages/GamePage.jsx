@@ -73,6 +73,7 @@ const GamePage = () => {
 
   const handleClick = (cell) => {
     if (!cell.active || !isPlaying) return;
+    if (cell.type === 'hit') return;
 
     if (cell.type === 'mole') {
       setScore((s) => s + 1);
@@ -91,7 +92,7 @@ const GamePage = () => {
         );
         setMessage('');
       }, 700);
-    } else {
+    } else if (cell.type === 'bomb') {
       setScore((s) => s - 1);
       setFail((f) => f + 1);
       setMessage('땡!');
