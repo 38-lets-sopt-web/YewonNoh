@@ -1,0 +1,45 @@
+.header {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  height: 5rem;
+  padding: 0 5rem;
+  z-index: 5;
+}
+
+.header-left {
+  justify-self: start;
+}
+
+.header-center {
+  justify-self: center;
+}
+
+.header-right {
+  justify-self: end;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+}
+
+.reload {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.reload img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.header h1 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
