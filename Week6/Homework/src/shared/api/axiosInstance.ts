@@ -12,6 +12,7 @@ axiosInstance.interceptors.request.use(config => {
   config.params = {
     ...config.params,
     api_key: import.meta.env.VITE_TMDB_API_KEY,
+    language: 'ko-KR',
   };
 
   return config;
