@@ -16,6 +16,7 @@ const MovieRating = ({ movieId }: MovieRatingProps) => {
   const [rating, setRating] = useState('');
   const [message, setMessage] = useState('');
   const [guestSessionId, setGuestSessionId] = useState('');
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const { data } = useRatedMovies(guestSessionId);
 
@@ -35,7 +36,10 @@ const MovieRating = ({ movieId }: MovieRatingProps) => {
   }, []);
 
   const ratedMovie = data?.results.find(movie => movie.id === movieId);
-  const inputValue = rating || (ratedMovie ? String(ratedMovie.rating) : '');
+
+  const inputValue = isDeleted
+    ? ''
+    : rating || (ratedMovie ? String(ratedMovie.rating) : '');
 
   const handleSave = async () => {
     const value = Number(rating);
@@ -45,12 +49,18 @@ const MovieRating = ({ movieId }: MovieRatingProps) => {
       return;
     }
 
+    if ((value * 10) % 5 !== 0) {
+      alert('별점은 0.5 단위로만 입력할 수 있습니다.');
+      return;
+    }
+
     const response = await postMovieRatingMutation.mutateAsync({
       movieId,
       guestSessionId,
       value,
     });
 
+    setIsDeleted(false);
     setMessage(response.status_message);
   };
 
@@ -60,6 +70,7 @@ const MovieRating = ({ movieId }: MovieRatingProps) => {
       guestSessionId,
     });
 
+    setIsDeleted(true);
     setRating('');
     setMessage(response.status_message);
   };
@@ -76,7 +87,10 @@ const MovieRating = ({ movieId }: MovieRatingProps) => {
         max={10}
         step={0.5}
         value={inputValue}
-        onChange={e => setRating(e.target.value)}
+        onChange={e => {
+          setIsDeleted(false);
+          setRating(e.target.value);
+        }}
       />
 
       <div className={styles.buttonGroup}>
