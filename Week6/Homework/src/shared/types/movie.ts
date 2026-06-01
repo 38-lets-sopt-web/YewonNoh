@@ -57,3 +57,26 @@ export interface MovieDetailResponse {
     name: string;
   }[];
 }
+
+// Guest Session
+export interface GuestSessionResponse {
+  success: boolean;
+  guest_session_id: string;
+  expires_at: string;
+}
+
+// Rating
+export interface RatingResponse {
+  success: boolean;
+  status_code: number;
+  status_message: string;
+}
+
+export interface RatedMoviesResponse extends Omit<
+  MovieListResponse,
+  'results'
+> {
+  results: (MovieResponse & {
+    rating: number;
+  })[];
+}

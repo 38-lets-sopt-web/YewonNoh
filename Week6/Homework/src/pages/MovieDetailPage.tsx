@@ -5,6 +5,7 @@ import {
   MovieBasicInfo,
   MovieHero,
   MovieOverview,
+  MovieRating,
 } from '@/features/movieDetail/components';
 import { useMovieDetail } from '@/features/movieDetail/hooks/useMovieDetail';
 
@@ -27,7 +28,11 @@ const MovieDetailPage = () => {
 
       <MovieOverview overview={movie.overview} />
 
-      <MovieBasicInfo movie={movie} />
+      <div className={styles.infoSection}>
+        <MovieBasicInfo movie={movie} />
+
+        <MovieRating movieId={movie.id} />
+      </div>
     </main>
   );
 };

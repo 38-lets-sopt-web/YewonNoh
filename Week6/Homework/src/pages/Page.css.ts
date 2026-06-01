@@ -11,3 +11,9 @@ export const title = style({
   fontSize: vars.fontSize.xxl,
   fontWeight: vars.fontWeight.bold,
 });
+
+export const infoSection = style({
+  display: 'grid',
+  gridTemplateColumns: '3fr 2fr',
+  gap: vars.spacing.lg,
+});
