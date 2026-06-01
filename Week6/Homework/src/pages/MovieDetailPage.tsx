@@ -1,5 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { Header, MovieHero } from '@/features/movieDetail/components';
+
+import {
+  Header,
+  MovieBasicInfo,
+  MovieHero,
+  MovieOverview,
+} from '@/features/movieDetail/components';
 import { useMovieDetail } from '@/features/movieDetail/hooks/useMovieDetail';
 
 import * as styles from './Page.css';
@@ -18,6 +24,10 @@ const MovieDetailPage = () => {
       <Header />
 
       <MovieHero movie={movie} />
+
+      <MovieOverview overview={movie.overview} />
+
+      <MovieBasicInfo movie={movie} />
     </main>
   );
 };

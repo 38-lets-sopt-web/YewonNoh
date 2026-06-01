@@ -6,6 +6,7 @@ export const container = style({
   overflow: 'hidden',
   backgroundColor: vars.color.white,
   borderRadius: vars.radius.lg,
+  marginBottom: vars.spacing.xl,
 });
 
 export const backdrop = style({
