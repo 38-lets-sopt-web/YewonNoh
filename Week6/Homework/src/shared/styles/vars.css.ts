@@ -8,6 +8,7 @@ export const vars = createGlobalTheme(':root', {
     background: '#f5f6f8',
     gray100: '#e5e7eb',
     gray300: '#d4d4d4',
+    gray400: '#a3a3a3',
     gray500: '#737373',
   },
 
@@ -18,6 +19,13 @@ export const vars = createGlobalTheme(':root', {
     lg: '2rem',
     xl: '2.4rem',
     xxl: '3.2rem',
+  },
+
+  fontWeight: {
+    regular: '400',
+    medium: '500',
+    semibold: '600',
+    bold: '700',
   },
 
   radius: {
