@@ -6,6 +6,7 @@ export const card = style({
   display: 'flex',
   flexDirection: 'column',
   overflow: 'hidden',
+  minHeight: '44rem',
   backgroundColor: vars.color.white,
   borderRadius: vars.radius.md,
   boxShadow: vars.shadow.sm,
@@ -30,8 +31,11 @@ export const content = style({
 });
 
 export const title = style({
+  overflow: 'hidden',
   fontSize: vars.fontSize.sm,
   fontWeight: vars.fontWeight.bold,
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
 });
 
 export const date = style({
@@ -49,4 +53,9 @@ export const overview = style({
   display: '-webkit-box',
   WebkitLineClamp: 3,
   WebkitBoxOrient: 'vertical',
+});
+
+export const link = style({
+  textDecoration: 'none',
+  color: 'inherit',
 });
