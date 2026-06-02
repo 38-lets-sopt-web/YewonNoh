@@ -6,7 +6,7 @@ export const card = style({
   display: 'flex',
   flexDirection: 'column',
   overflow: 'hidden',
-  minHeight: '44rem',
+  minHeight: '47rem',
   backgroundColor: vars.color.white,
   borderRadius: vars.radius.md,
   boxShadow: vars.shadow.sm,
